@@ -1,5 +1,6 @@
 import cv2
 import os
+import numpy as np
 
 # Path to the faces dataset
 data_folder_path = 'faces'
@@ -16,6 +17,7 @@ current_id = 0
 for person_name in os.listdir(data_folder_path):
     person_path = os.path.join(data_folder_path, person_name)
     if os.path.isdir(person_path):
+        print(person_path)
         for filename in os.listdir(person_path):
             img_path = os.path.join(person_path, filename)
             grayscale_img = cv2.imread(img_path, cv2.IMREAD_GRAYSCALE)

@@ -1,0 +1,7 @@
+# Ignore the faces and music directories
+faces/
+music/
+
+# Ignore saved models
+face_model.yml
+label_dict.pkl
