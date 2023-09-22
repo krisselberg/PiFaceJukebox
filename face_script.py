@@ -31,7 +31,7 @@ def capture_images(folder_name):
 
         key = cv2.waitKey(1)
         if key == ord(' '):  # Spacebar pressed
-            img_filename = os.path.join(folder_name, f'image{img_count}.jpg')
+            img_filename = os.path.join(full_folder_path, f'image{img_count}.jpg')
             cv2.imwrite(img_filename, frame)
             print(f'Image saved: {img_filename}')
             img_count += 1
