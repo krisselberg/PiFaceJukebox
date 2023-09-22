@@ -1,4 +1,3 @@
-# FaceRecogThemeSongenator
 
 # Facial Recognition Theme Song Generator
 
