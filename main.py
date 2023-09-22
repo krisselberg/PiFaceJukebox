@@ -1,5 +1,7 @@
 import cv2
 import pickle
+import pygame
+import os
 
 # Load the model and label dictionary (if saved previously)
 model = cv2.face.LBPHFaceRecognizer_create()
@@ -15,11 +17,20 @@ while True:
     grayscale_img = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     label, confidence = model.predict(grayscale_img)
     if confidence < 100:  # You can adjust this value based on your requirements
-        person_name = label_dict[label]
+        person_name = label
+        mp3_file = f"music/{person_name}.mp3"
+            
+        if os.path.exists(mp3_file):
+            pygame.mixer.music.load(mp3_file)
+            pygame.mixer.music.play()
+    
         cv2.putText(frame, person_name, (50, 50), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 255, 0), 2)
-    cv2.imshow('Frame', frame)
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
+        cv2.imshow('Frame', frame)
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+
+    cap.release()
+    cv2.destroyAllWindows()
 
 cap.release()
 cv2.destroyAllWindows()
