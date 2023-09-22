@@ -17,8 +17,7 @@ def recognize_and_play_music(video_source=0):
             roi_color = img[y:y + h, x:x + w]
             
             # Assuming the face recognition identifies John Doe
-            # In reality, you'd have a trained model to recognize the person
-            person_name = "john_doe"
+            person_name = "CHANGE_ME"
             
             # Look up their theme song and play it
             music_file = f"music/{person_name}.mp3"
