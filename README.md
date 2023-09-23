@@ -40,7 +40,7 @@ Before getting started, ensure you have the following hardware and software requ
 - Raspbian OS (or any Raspberry Pi compatible Linux distribution)
 - Python 3.x
 - OpenCV library
-- [FFmpeg](https://www.ffmpeg.org/) for audio playback
+- Pydub
 
 ## Installation
 
