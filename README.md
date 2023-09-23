@@ -46,3 +46,11 @@ Before getting started, ensure you have the following hardware and software requ
    git clone https://github.com/jaslevy
    /facial-recognition-theme-song.git
 
+2. **Install Dependencies:**
+
+Navigate to the project directory and install the required Python packages:
+
+   ```bash
+   cd facial-recognition-theme-song
+   pip install -r requirements.txt
+
