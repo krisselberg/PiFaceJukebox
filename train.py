@@ -1,38 +1,45 @@
-import cv2
+import face_recognition
 import os
 import numpy as np
+import pickle
+from sklearn import svm
 
-# Path to the faces dataset
 data_folder_path = 'faces'
 
-# The LBPH (Local Binary Patterns Histograms) Face Recognizer
-model = cv2.face.LBPHFaceRecognizer_create()
-
-# Read images from each subdirectory
+# Collecting labels and embeddings
 labels = []
-face_samples = []
+embeddings = []
 label_dict = {}
 current_id = 0
 
 for person_name in os.listdir(data_folder_path):
     person_path = os.path.join(data_folder_path, person_name)
     if os.path.isdir(person_path):
-        print(person_path)
         for filename in os.listdir(person_path):
             img_path = os.path.join(person_path, filename)
-            grayscale_img = cv2.imread(img_path, cv2.IMREAD_GRAYSCALE)
+            image = face_recognition.load_image_file(img_path)
+            face_locations = face_recognition.face_locations(image)
+            print(img_path, face_locations)
+            
+            if len(face_locations) == 0:
+                print(f"No faces found in {img_path}. Skipping...")
+                continue
+            
+            # Assuming the first face is the desired one
+            face_embedding = face_recognition.face_encodings(image, face_locations)[0]
             label_dict[current_id] = person_name
             labels.append(current_id)
-            face_samples.append(grayscale_img)
+            embeddings.append(face_embedding)
         current_id += 1
 
-# Train the model
-model.train(face_samples, np.array(labels))
+# Train a SVM classifier on the embeddings
+clf = svm.SVC(gamma='scale', probability=True)
+clf.fit(embeddings, labels)
 
-# Save the model (Optional)
-model.save('face_model.yml')
+# Save the SVM classifier (Optional)
+with open('face_model.pkl', 'wb') as f:
+    pickle.dump(clf, f)
 
 # Save the label dictionary for later use (Optional)
-import pickle
 with open('label_dict.pkl', 'wb') as f:
     pickle.dump(label_dict, f)

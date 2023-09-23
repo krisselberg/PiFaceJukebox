@@ -3,5 +3,5 @@ faces/
 music/
 
 # Ignore saved models
-face_model.yml
+face_model.pkl
 label_dict.pkl
