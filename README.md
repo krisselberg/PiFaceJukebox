@@ -1,12 +1,12 @@
 # Pi Face Jukebox
 
-Welcome to the Pi Face Jukebox! This project allows you to create a fun and interactive experience by playing unique theme songs for people who enter a room based on facial recognition. The system utilizes a Raspberry Pi, a camera module, and the OpenCV library to achieve this functionality.
+Welcome to the Pi Face Jukebox! This project allows you to create a fun and interactive experience by playing unique theme songs for people who enter a room based on facial recognition. The system utilizes a Raspberry Pi, a camera module, and the OpenCV library to achieve this functionality (for the MacOS alternative, click [here](https://github.com/jaslevy/PiFaceJukebox)).
 
 ## Table of Contents
 
 - [Introduction](#introduction)
 - [Requirements](#requirements)
-- [Installation](#installation)
+- [Quickstart](#quickstart)
 
 ## Introduction
 
@@ -22,13 +22,14 @@ This project aims to create a personalized and entertaining environment by assoc
 
 ## Requirements
 
-Before getting started, ensure you have the following hardware and software requirements:
+Before getting started, ensure you have the following hardware requirements:
 
 ### Hardware
 
 - Raspberry Pi (3 or later recommended)
 - Raspberry Pi Camera Module
 - Speaker or audio output device
+- Computer running macOS
 
 ## Quickstart
 
@@ -67,7 +68,7 @@ This command will play a test sound through the speaker to verify that the audio
    Create a directory named music in the project folder and place the theme song files (.mp3 or .m4a formats) in this directory. Each file should be named after the person it is associated with.
 
 6. **Collect Training Data:**
-   Capture images of the people you want to recognize and assign theme songs to. Use the face_script script included in the project:
+   Capture images of the people you want to recognize and assign theme songs to. This step should be done on a computer running MacOS. Use the face_script script included in the project:
 
 ```bash
 python face_script.py
